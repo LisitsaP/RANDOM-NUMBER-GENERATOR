@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import RandomNumbrt from "./components/RandomNumbrt";
 
 function App() {
+  const [data, setData] = useState(10);
+  function getData(val) {
+    setData(val.target.value);
+    // console.warn(val.target.value);
+    console.log(data);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="text" placeholder="MAX NUMBER" onChange={getData} />
+      <RandomNumbrt maxNum={data} />
     </div>
   );
 }
